@@ -1,0 +1,20 @@
+﻿Set run directory to Y:\science_pwa
+Native Launcher Version: 1636
+Operating System: Microsoft Windows 7
+Application Hash: 2178b688ebe72e6983d8468c4cab7533bf29fc5b
+Application Data directory: C:\users\crossover\Application Data/.minecraft
+Executable Path: Minecraft.exe
+App Directory dir: Y:\science_pwa
+Start dir: C:/users/crossover/Application Data/.minecraft
+Launcher dir: Y:/science_pwa/game
+TmpDir dir: Y:/science_pwa/tmp
+(Optional) Java Launcher hash: 
+Java Version: 
+x64: 0
+LauncherConfiguration from: http://launchermeta.mojang.com/mc/launcher.json
+Failed to download manifest
+C:/users/crossover/Application Data/.minecraft/launcher_profiles.json doesn't exist, new user?
+Generated upgrade id: 3651568234
+Using old launcher as we're not in the rollout.
+We need to extract the launcher jar, it doesn't exist!
+Game launcher outdated!

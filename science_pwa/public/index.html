@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="https://science-pwa.firebaseapp.com/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensors</title>
+  <link rel="stylesheet" type="text/css" href="styles/inline.css">
+     
+      <link rel="stylesheet" href="fonts/compiled/roboto/stylesheet.css">
+       <link rel="stylesheet" href="fonts/compiled/productsans/stylesheet.css">
+     <link rel="stylesheet" href="fonts/compiled/md-icons/material-icons.css">
+<link rel="stylesheet" href="mdl/material.min.css">
+<script src="mdl/material.min.js"></script>
+  <!-- TODO add manifest here -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#2d8ae6">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2e7d32">
+    <meta name="theme-color" content="#2e7d32">
+    
+    <link rel="stylesheet" type="text/css" href="graphing/c3/c3.css">
+    
+     <script src="graphing/c3/c3.min.js"></script>
+    <script src="graphing/d5/d3.v5.min.js"></script>
+   <style>
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background:transparent;
+    
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #BDBDBD;
+    border-radius: 2.5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #9e9e9e;
+}
+</style>
+</head>
+<body>
+
+  <header class="header">
+      
+    <h1 class="header__title">Sensors</h1>
+    <button id="butRefresh" class="bt headerButton" aria-label="Refresh"></button>
+    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+      
+  <button  aria-label="Menu" class="headerButton" id="demo-menu-lower-right"
+        class="mdl-button mdl-js-button mdl-button--icon">
+<i class="material-icons">
+more_vert
+</i>
+</button>
+
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"for="demo-menu-lower-right">
+  <li class="mdl-menu__item">Settings</li>
+   
+  <li class="io2 mdl-menu__item">Night Mode</li>
+
+     <li class="mdl-menu__item">Credits</li>
+  <li class="mdl-menu__item">Developer Options</li>  
+</ul>
+  </header>
+  
+  <main id="main" class="main">
+    
+      
+      
+      <div id="logo" align="center">
+      <div class="nosetup">
+      <div class="nosetupart">
+          
+          </div>
+          <p class="nosensors">
+              You have not set up a sensor yet.  Click the add button up top to set a sensor up.
+          </p>
+      </div>
+      
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="card" style="height:auto">
+          
+      <div id="name"></div>
+      <div id="ip"></div>
+          <div id="chart"></div>
+      </div>
+  </main>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+<div class="bottomnav">
+    
+   <button class="bottom mdl-button mdl-js-button mdl-js-ripple-effect">
+ <i class="material-icons">home</i>
+</button>
+    
+    <button class="bottom mdl-button mdl-js-button mdl-js-ripple-effect">
+   <i class="material-icons">language</i>
+</button>
+    
+    
+    <button class="bottom mdl-button mdl-js-button mdl-js-ripple-effect">
+  <i class="material-icons">developer_mode </i>
+</button>
+    </div>
+ 
+    
+    
+    
+    
+    
+      <div class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Add a new sensor</div>
+      <div class="dialog-body">
+        
+        
+        
+        <select id="selectSensorToAdd">
+          
+          
+          
+          <option value="2367105">Aircube</option>
+          <option disabled value="2357536">Aircube Nano</option>
+          
+          
+             
+
+        </select>
+        
+        <form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sensorName">
+    <label class="mdl-textfield__label" for="sample3">Sensor Name</label>
+      
+  </div>
+</form>
+        
+      </div>
+      <div class="dialog-buttons">
+        <button id="butAddCity" class="button mdl-button mdl-js-button mdl-js-ripple-effect">Add</button>
+        <button id="butAddCancel" class="button mdl-button mdl-js-button mdl-js-ripple-effect"	>Cancel</button>
+      </div>
+    </div>
+  </div>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+      <div class="setup-container">
+    <div class="dialog">
+      <div class="dialog-title">Locate your device</div>
+      <div class="dialog-body">
+        <p class="article">
+            The sensor's IP address tells the app where to find the sensor. You can find the IP address on the bottom of the sensor. Make sure that your device is connected to the same network as the sensor. Use the reload button to test the connection. The default login password to the sensor is aircube1.
+          </p>
+        
+        <form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sensorAddress">
+    <label class="mdl-textfield__label" for="sample3">IP Address</label>
+      
+  </div>
+</form>
+          
+          
+          
+        <div id="status">
+      <div class="connectionbutton">
+          <div class="connectvalid"><i class="mdsmall material-icons connect">close</i></div>
+          <p class="connectiontext">
+          No connection    
+          </p>
+          
+          </div>   
+    </div>
+          
+          
+          
+      </div>
+      <div class="dialog-buttons">
+          <button onclick="reloadGetAddress()" class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">refresh</i>
+</button>
+          <button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">help</i>
+</button>
+        <button id="butNext" class="button mdl-button mdl-js-button mdl-js-ripple-effect">Next</button>
+        <button id="butAddCancelSetup" class="button mdl-button mdl-js-button mdl-js-ripple-effect"	>Cancel</button>
+      </div>
+    </div>
+  </div>
+      
+      
+      
+<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<script>
+(function() {
+  'use strict';
+  var snackbarContainer = document.querySelector('#demo-snackbar-example');
+  var showSnackbarButton = document.querySelector('#demo-show-snackbar');
+  var handler = function(event) {
+    showSnackbarButton.style.backgroundColor = '';
+  };
+  showSnackbarButton.addEventListener('click', function() {
+    'use strict';
+    
+    var data = {
+      message: 'If the connection is refused, try making sure that you entered the correct IP address and port number.',
+      timeout: 5000,
+      actionHandler: handler,
+      actionText: 'OK'
+    };
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  });
+}());
+</script>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="done-container">
+    <div class="dialog">
+      <div class="dialog-title">Setup complete!</div>
+      <div class="dialog-body">
+        
+        
+        
+        
+        
+        <div class="art-complete">
+          
+          
+          </div>
+        
+      </div>
+      <div class="dialog-buttons">
+      
+        <button id="butDone" class="button mdl-button mdl-js-button mdl-js-ripple-effect">Done</button>
+      </div>
+    </div>
+  </div>
+      
+      
+      
+      
+      
+      
+      
+      
+  <!--<div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>-->
+
+  <!-- Uncomment the line below when ready to test with fake data -->
+  <script src="scripts/app.js" async></script>
+
+</body>
+</html>
